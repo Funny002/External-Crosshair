@@ -1,3 +1,4 @@
+import 'element-plus/theme-chalk/base.css';
 import { stoupRouter } from './router';
 import { createApp } from 'vue';
 import App from './app.vue';

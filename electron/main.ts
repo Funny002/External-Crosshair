@@ -4,11 +4,9 @@ import { Tray } from './tray';
 
 const tray = new Tray();
 const main = new MainWindow();
-
 app.whenReady().then(() => {
   tray.stoup(); // 托盘
   main.stoup(); // 主窗口
-
   console.log('app ready');
 });
 
