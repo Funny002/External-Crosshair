@@ -1,0 +1,33 @@
+{
+  "name": "external-crosshair",
+  "private": false,
+  "version": "0.0.1",
+  "author": "Funny <funnydsu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "web:dev": "vite",
+    "web:build": "vue-tsc -b && vite build",
+    "elctron:tsc": "tsc ./electron/main.ts -outDir ./build",
+    "elctron:dev": "npm run elctron:tsc && electron ./build/main.js --trace-warnings",
+    "build": "npm run elctron:tsc && npm run web:build"
+  },
+  "dependencies": {
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "electron": "^32.0.1",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vue-tsc": "^2.0.29"
+  },
+  "build": {
+    "extraResources": {
+      "form": "/electron/config",
+      "to": "./build/config"
+    }
+  }
+}
