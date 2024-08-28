@@ -16,6 +16,7 @@
     user-select: none;
     align-items: stretch;
     box-sizing: border-box;
+    z-index: 999999999999999;
     background-color: #f8f8f8;
     border-bottom: 1px solid #e5e5e5;
     height: var(--height-tabBar, 30px);

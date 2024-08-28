@@ -12,6 +12,7 @@
     "build": "npm run elctron:tsc && npm run web:build"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "element-plus": "^2.8.1",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"
