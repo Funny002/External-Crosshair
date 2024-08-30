@@ -1,20 +1,23 @@
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 import { resolve } from 'node:path';
+
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(async () => ({
   plugins: [vue()],
-  build: {
-    outDir: resolve(__dirname, './build/web'),
-  },
+  clearScreen: false,
   server: {
-    port: 8420,
+    port: 1420,
+    strictPort: true,
+    watch: {
+      ignored: ['**/src-tauri/**'],
+    },
   },
   resolve: {
     alias: {
-      '@views': resolve(__dirname, './src/views'),
-      "@utils": resolve(__dirname, './src/utils'),
-      '@components': resolve(__dirname, './src/components'),
+      '@utils': resolve(__dirname, 'src/utils'),
+      '@views': resolve(__dirname, 'src/views'),
+      '@components': resolve(__dirname, 'src/components'),
     },
   },
-});
+}));

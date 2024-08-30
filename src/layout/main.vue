@@ -20,8 +20,8 @@
 <script lang="ts" setup>
 import { Aim, Setting } from '@element-plus/icons-vue';
 import { WindowLayout } from '@components/Layout';
-import { ElButton } from 'element-plus';
 import { reactive, shallowRef } from 'vue';
+import { ElButton } from 'element-plus';
 
 interface MenuItem {
   icon?: any;

@@ -3,12 +3,12 @@ import { RouteRecordRaw } from 'vue-router';
 export const routes: RouteRecordRaw[] = [{
   path: '/',
   name: 'App',
-  redirect: '/home',
+  redirect: '/aim',
   component: () => import('../layout/main.vue'),
   children: [{
-    path: 'home',
-    name: 'Home',
-    component: () => import('@views/Home/index.vue'),
+    path: 'aim',
+    name: 'Aim',
+    component: () => import('@views/Aim/index.vue'),
     meta: {
       title: '首页',
       icon: 'home',

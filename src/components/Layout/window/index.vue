@@ -1,6 +1,6 @@
 <template>
-  <div class="app-layout"  :style="{'--height-tabBar': height}">
-    <div class="app-layout-tabBar" :class="`is-${props.platform}`">
+  <div class="app-layout" :style="{'--height-tabBar': height}">
+    <div data-tauri-drag-region class="app-layout-tabBar" :class="`is-${props.platform}`">
       <div class="app-layout-tabBar__body">
         <slot name="tabBar"/>
       </div>

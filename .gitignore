@@ -1,9 +1,7 @@
+.vscode/*
+!.vscode/extensions.json
 .idea
 .DS_Store
 
-# mkdir
-build
+dist
 node_modules
-
-# files
-package-lock.json
