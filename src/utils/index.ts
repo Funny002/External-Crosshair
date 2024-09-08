@@ -1,4 +1,3 @@
-export * from './array'
-export * from './limit'
-export * from './object'
-export * from './random'
+export * from './storage.ts';
+export * from './limit.ts';
+export * from './object';

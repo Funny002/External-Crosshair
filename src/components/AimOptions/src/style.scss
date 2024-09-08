@@ -1,0 +1,45 @@
+#AimOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#AimOptions.AimOptions .AimOptions-item {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+
+  &__label {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+
+    .font-awesome {
+      margin: 4px;
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+
+    &.is-color {
+      display: flex;
+      padding-left: 20px;
+      align-items: center;
+
+      .el-input {
+        width: 110px;
+        margin-left: 10px;
+      }
+    }
+
+    &.is-number {
+      padding-left: 30px;
+
+      .el-input-number {
+        width: 110px;
+      }
+    }
+  }
+}

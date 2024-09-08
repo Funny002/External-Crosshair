@@ -1,13 +1,17 @@
 {
   "name": "external-crosshair",
+  "version": "0.1.0",
   "private": false,
-  "version": "0.0.1",
-  "author": "Funny <funnydsu@gmail.com>",
   "license": "MIT",
+  "author": "Funny <funnydsu@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Funny002/External-Crosshair.git"
+  },
   "scripts": {
     "web:dev": "vite",
     "web:build": "vue-tsc -b && vite build",
-    "elctron:tsc": "tsc ./electron/main.ts -outDir ./build",
+    "elctron:tsc": "tsc -p ./electron/tsconfig.json -outDir ./build",
     "elctron:dev": "npm run elctron:tsc && electron ./build/main.js --trace-warnings",
     "build": "npm run elctron:tsc && npm run web:build"
   },
@@ -25,11 +29,5 @@
     "typescript": "^5.5.3",
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
-  },
-  "build": {
-    "extraResources": {
-      "form": "/electron/config",
-      "to": "./build/config"
-    }
   }
 }

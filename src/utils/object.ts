@@ -170,3 +170,12 @@ export function isEmpty(value: any): boolean {
   if (isArray(value)) return value.length === 0;
   return false;
 }
+
+/**
+ * 检查给定的字符串是否为有效的URL格式
+ * @param url 要检查的字符串
+ * @returns 如果字符串是有效的URL格式，则返回true；否则返回false
+ */
+export function isUrl(url: string) {
+  return /^(http|https|ftp|file):\/\//.test(url);
+}

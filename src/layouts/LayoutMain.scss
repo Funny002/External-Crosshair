@@ -1,0 +1,29 @@
+#Windows.Windows .Windows-content {
+  display: flex;
+  align-items: stretch;
+  $--side: 120px;
+
+  &__side {
+    width: $--side;
+    display: none;
+    flex: 0 0 auto;
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    width: calc(100vw - $--side);
+  }
+}
+
+.Windows-content__side {
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e5e5;
+
+  .el-button {
+    margin: 5px 0;
+  }
+}

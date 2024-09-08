@@ -8,12 +8,11 @@ const defaultConfig = {
   show: false,
 };
 
-export function createWindow(src: string, config?: BrowserWindowConstructorOptions, loadFunc?: Function) {
+export function createWindow(src: string, config: BrowserWindowConstructorOptions = {}, loadFunc?: Function) {
   const win = new BrowserWindow(objectMerge(defaultConfig, config));
 
   if (!('show' in config) || config.show) {
     win.once('ready-to-show', () => {
-      console.log('win');
       win.show();
     });
   }

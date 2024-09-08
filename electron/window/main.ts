@@ -20,16 +20,16 @@ export class MainWindow {
     if (!this.win || this.isDestroyed) {
       const windowBounds = this.storage.get('windowBounds');
       const config: BrowserWindowConstructorOptions = {
-        ...windowBounds,
-        fullscreen: false,
+        width: 700,
+        height: 450,
+        minWidth: 600,
+        minHeight: 400,
         titleBarStyle: 'hidden',
-        titleBarOverlay: {
-          height: 28,
-          color: '#f8f8f8',
-          symbolColor: '#000000',
+        ...windowBounds,
+        webPreferences: {
+          preload: resolve(__dirname, '../preload/main.js'),
         },
       };
-
       this.win = createWindow(url, config);
     } else {
       this.win.show();

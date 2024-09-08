@@ -1,0 +1,21 @@
+#Windows {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  --titleBar-height: 30px;
+  padding-top: var(--titleBar-height, 30px);
+}
+
+#Windows.Windows .Windows {
+  &-titleBar {
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  &-content {
+    width: 100vw;
+    overflow: hidden;
+    background-color: #f6f8fa;
+    height: calc(100vh - var(--titleBar-height, 30px));
+  }
+}

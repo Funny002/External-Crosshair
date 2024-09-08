@@ -6,7 +6,7 @@ import { isObject } from './object';
 
 function keySplit(key: string): [string[], string] {
   const names = key.split('.');
-  const name = names.pop();
+  const name = names.pop() as string;
   return [names, name];
 }
 
@@ -19,10 +19,14 @@ export function mkdirPath(path: string) {
 
 export class Storage {
   private readonly dir: string;
-  private store: Record<string, any>;
+  private store: Record<string, any> | null = null;
 
   constructor(path: string) {
-    this.dir = resolve(process.env.USERPROFILE, './.ExternalCrossHair', path);
+    const rootDir = process.env.USERPROFILE as string;
+    this.dir = resolve(rootDir, './.ExternalCrossHair', path);
+    if (this.dir.indexOf(rootDir) !== 0) {
+      throw new Error(`${ path } is not in ${ rootDir }`);
+    }
     this.initStorage();
   }
 
@@ -31,7 +35,7 @@ export class Storage {
   }
 
   readFile() {
-    this.store = JSON.parse(readFileSync(this.dir, 'utf-8'));
+    this.store = JSON.parse(readFileSync(this.dir, 'utf-8') || '{}');
   }
 
   writeFile() {
@@ -48,8 +52,8 @@ export class Storage {
     }
   }
 
-  handlerKey(keys: string[]) {
-    let target = this.store;
+  handlerKey(keys: string[]): Record<string, any> {
+    let target = this.store || {};
     if (!keys.length) return target;
     for (const key of keys) {
       if (isObject(target)) {

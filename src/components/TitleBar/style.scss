@@ -1,0 +1,50 @@
+#TitleBar {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  position: fixed;
+  app-region: drag;
+  align-items: center;
+  z-index: 99999999999;
+  background-color: #ffffff;
+}
+
+#TitleBar.TitleBar .TitleBar {
+  &-content {
+    flex: 1 1 auto;
+    padding-left: 10px;
+  }
+
+  &-button {
+    height: 100%;
+    flex: 0 0 auto;
+    app-region: no-drag;
+
+    &__item {
+      padding: 0;
+      width: 40px;
+      height: 100%;
+      border: none;
+      cursor: pointer;
+      align-items: center;
+      display: inline-flex;
+      background: transparent;
+      justify-content: center;
+
+      .font-awesome {
+        margin: 0;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      &.is-close:hover {
+        fill: #fff;
+        color: #fff;
+        background-color: #f44336;
+      }
+    }
+  }
+}
