@@ -177,5 +177,5 @@ export function isEmpty(value: any): boolean {
  * @returns 如果字符串是有效的URL格式，则返回true；否则返回false
  */
 export function isUrl(url: string) {
-  return /^(http|https|ftp|file):\/\//.test(url);
+  return /^(http|https):\/\//.test(url);
 }

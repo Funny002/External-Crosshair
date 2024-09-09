@@ -1,8 +1,10 @@
 {
   "name": "external-crosshair",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "license": "MIT",
+  "homepage": "./",
+  "main": "./build/main.js",
   "author": "Funny <funnydsu@gmail.com>",
   "repository": {
     "type": "git",
@@ -13,7 +15,7 @@
     "web:build": "vue-tsc -b && vite build",
     "elctron:tsc": "tsc -p ./electron/tsconfig.json -outDir ./build",
     "elctron:dev": "npm run elctron:tsc && electron ./build/main.js --trace-warnings",
-    "build": "npm run elctron:tsc && npm run web:build"
+    "build": "npm run elctron:tsc && npm run web:build && npx electron-builder --win portable"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -25,9 +27,25 @@
     "@types/node": "^22.5.0",
     "@vitejs/plugin-vue": "^5.1.2",
     "electron": "^32.0.1",
+    "electron-builder": "^25.0.5",
     "sass": "^1.77.8",
     "typescript": "^5.5.3",
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
+  },
+  "build": {
+    "appId": "cn.refunny.external-crosshair",
+    "productName": "External Crosshair",
+    "directories": {
+      "output": "./output"
+    },
+    "files": [
+      "build/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable",
+      "requestedExecutionLevel": "asInvoker"
+    }
   }
 }

@@ -47,6 +47,6 @@ interface ElectronApi {
   };
 }
 
-declare interface Window {
+declare interface window {
   electronApi: ElectronApi;
 }

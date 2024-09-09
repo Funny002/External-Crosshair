@@ -5,9 +5,10 @@ import { resolve } from 'node:path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  base: './',
   cacheDir: resolve(__dirname, '.cache'),
   build: {
-    sourcemap: true,
+    sourcemap: false,
     chunkSizeWarningLimit: 1024,
     outDir: resolve(__dirname, './build/web'),
   },

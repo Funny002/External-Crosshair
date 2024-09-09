@@ -8,7 +8,7 @@ const defaultConfig = {
   show: false,
 };
 
-export function createWindow(src: string, config: BrowserWindowConstructorOptions = {}, loadFunc?: Function) {
+export function createWindow(src: string, config: BrowserWindowConstructorOptions = {}, hash?: string) {
   const win = new BrowserWindow(objectMerge(defaultConfig, config));
 
   if (!('show' in config) || config.show) {
@@ -17,13 +17,15 @@ export function createWindow(src: string, config: BrowserWindowConstructorOption
     });
   }
 
-  const loadApi = isUrl(src) ? win.loadURL(src) : win.loadFile(src);
+  let loadApi: Promise<any>;
 
-  loadApi.then(() => {
-    if (loadFunc) {
-      loadFunc.apply(win);
-    }
-  });
+  if (isUrl(src)) {
+    loadApi = win.loadURL(src);
+  } else {
+    loadApi = win.loadFile(src, hash ? { hash: hash } : undefined);
+  }
+
+  loadApi.then();
 
   return win;
 }

@@ -1,8 +1,8 @@
-import { app, BrowserWindow, BrowserWindowConstructorOptions, screen } from 'electron';
+import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 import { createWindow, Storage } from '../utils';
-import { resolve } from 'path';
+import { join } from 'path';
 
-const url = app.isPackaged ? resolve(__dirname, './web/index.html') : 'http://localhost:8420/';
+const url = app.isPackaged ? join(__dirname, '../web/index.html') : 'http://localhost:8420';
 
 export class MainWindow {
   storage: Storage;
@@ -27,7 +27,7 @@ export class MainWindow {
         titleBarStyle: 'hidden',
         ...windowBounds,
         webPreferences: {
-          preload: resolve(__dirname, '../preload/main.js'),
+          preload: join(__dirname, '../preload/main.js'),
         },
       };
       this.win = createWindow(url, config);
@@ -48,12 +48,6 @@ export class MainWindow {
     view.once('close', () => {
       view.off('moved', handlerFunc);
       view.off('resized', handlerFunc);
-    });
-  }
-
-  getDisplays() {
-    return screen.getAllDisplays().map(({ id, label, bounds }) => {
-      return { id, label, ...bounds, center: { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 } };
     });
   }
 }

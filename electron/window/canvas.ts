@@ -1,10 +1,10 @@
 import { BrowserWindowConstructorOptions } from 'electron';
 import { app, BrowserWindow } from 'electron';
 import { createWindow } from '../utils';
-import { resolve } from 'path';
+import { join } from 'path';
 
 function CreateCanvas(uuid: string) {
-  const url = app.isPackaged ? resolve(__dirname, './web/index.html/') : `http://localhost:8420/`;
+  const url = app.isPackaged ? join(__dirname, '../web/index.html') : `http://localhost:8420`;
 
   const config: BrowserWindowConstructorOptions = {
     width: 300,
@@ -17,10 +17,11 @@ function CreateCanvas(uuid: string) {
       devTools: false,
       enableWebSQL: false,
       disableDialogs: true,
-      preload: resolve(__dirname, '../preload/main.js'),
+      preload: join(__dirname, '../preload/main.js'),
     },
   };
-  const view = createWindow(url + `#/canvas/${ uuid }`, config);
+
+  const view = createWindow(url, config, `canvas/${ uuid }`);
   view.setSkipTaskbar(true);
   view.setIgnoreMouseEvents(true, { forward: true });
   return view;
@@ -34,6 +35,9 @@ export class CanvasManage {
     if (this.uuid !== uuid) this.hide();
     this.uuid = uuid;
     this.view = CreateCanvas(uuid);
+    this.view.once('closed', () => {
+      this.hide();
+    });
   }
 
   hide() {
